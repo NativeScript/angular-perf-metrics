@@ -2,22 +2,25 @@
 
 NativeScript empowers JavaScript with native platform APIs which means it also works with Angular in delightful ways.
 
-For example, you can use your Angular skills to build rich iOS and Android experiences without ever leaving your TypeScript driven codebase.
+For example, you can use your Angular skills to build rich Android and iOS experiences without ever leaving your TypeScript driven codebase.
 
 To better illustrate what is meant by this, let's cover a few comparisons between standard web targeted Angular apps vs. NativeScript enabled Angular apps targeting iOS and Android platforms.
 
 ## Bootstrap
 
 Web apps usually don't have to worry about the browser lifecycle, as the flow is pretty simple:
+
 1. load page
 2. user interacts with page
 3. leave page
 
-The user can even have multiple copies of the same application open. If the application is open, some UI is showing.
+The user can even have multiple copies of the same application open across different browser tabs or windows. If the application is open, some UI is showing.
 
-Mobile apps are a bit different. The app can be launched in the background, for example we can exit the app UI while the app itself is still running, the app may be in the background, whereby other lifecycle details may need to be taken into consideration by the developer.
+Mobile apps are a bit different.
 
-To make this a bit more clear, let's look at the differences in bootstrapping:
+The app can be launched in the background. In other words, we can exit the app UI while the app itself is still running, the app may be in the background, whereby other lifecycle details may need to be taken into consideration by the developer.
+
+To make this a bit more clear, let's look at the differences in app bootstrap:
 
 ### Angular Web Bootstrap
 
@@ -49,11 +52,11 @@ runNativeScriptAngularApp({
 });
 ```
 
-On NativeScript, your Angular app is a part of a broader picture (*an entirely new platform enriched picture*). 
+On NativeScript, your Angular app is a part of a broader picture (_an entirely new platform enriched picture_).
 
-It's good to understand `providedIn: 'root'` services are singletons for that single Angular app instance, so if you need a singleton for the broader "platform picture" you can use `providedIn: 'platform'`.
+It's good to understand `providedIn: 'root'` services are singletons for that _singlular_ Angular app instance, so if you need a singleton for the broader "platform picture" you can use `providedIn: 'platform'`.
 
-Let us elaborate on each platform:
+Let us elaborate:
 
 1. On Android, when the user leaves the app with the back button the Activity is destroyed, so your ApplicationRef will be destroyed. This behavior has changed in Android 12 (https://developer.android.com/about/versions/12/behavior-changes-all#back-press), so from 12 and up the angular instance should not be destroyed anymore.
 
@@ -134,24 +137,26 @@ Here we can use any NativeScript View components we desire with our standalone c
 
 ## Using Directives
 
-To understand how natural Angular development is with NativeScript let's look at a few additional examples directly from the Angular docs: https://angular.io/guide/attribute-directives
-
-Directives work exactly as you would expect within the scope of iOS and Android development with NativeScript:
+To understand how natural Angular development is with NativeScript let's look at a few additional examples from the Angular docs: https://angular.io/guide/attribute-directives
 
 ```
-import { Directive, ElementRef } from "@angular/core";
+import { Directive, ElementRef, inject } from "@angular/core";
 
 @Directive({
   selector: "[appHighlight]",
 })
 export class HighlightDirective {
-  constructor(private el: ElementRef) {
-    this.el.nativeElement.style.backgroundColor = "yellow";
-  }
+    private el = inject(ElementRef);
+
+    constructor() {
+        this.el.nativeElement.style.backgroundColor = "yellow";
+    }
 }
 ```
 
-That is precisely the `highlight.directive.ts` example shown in the Angular docs and it works 100% the same when targeting iOS and Android with NativeScript, bearing in mind the visuals on screen are pure platform native views such as [UILabel](https://developer.apple.com/documentation/uikit/uilabel) on iOS and [TextView](https://developer.android.com/reference/android/widget/TextView) on Android represented simply via a [Label](https://docs.nativescript.org/ui-and-styling.html#label) view component provided by @nativescript/core:
+Directives work exactly as you would expect within the scope of iOS and Android development with NativeScript.
+
+That is precisely the `highlight.directive.ts`, bearing in mind the visuals on screen are pure platform native views such as [UILabel](https://developer.apple.com/documentation/uikit/uilabel) on iOS and [TextView](https://developer.android.com/reference/android/widget/TextView) on Android represented simply via a [Label](https://docs.nativescript.org/ui-and-styling.html#label) view component provided by @nativescript/core:
 
 ```
 <Label appHighlight text="Attribute Directive"></Label>
@@ -161,9 +166,9 @@ That is precisely the `highlight.directive.ts` example shown in the Angular docs
 
 ### Event Considerations
 
-In the Angular docs the directive is further enhanced with `mouseenter` and `mouseleave` events via the [HostListener](https://angular.io/api/core/HostListener) decorator.
+The directive is further enhanced in the Angular docs with `mouseenter` and `mouseleave` events via the [HostListener](https://angular.io/api/core/HostListener) decorator.
 
-This works the same in NativeScript regarding `HostListener`'s however only for events that are applicable for mobile platforms such as iOS and Android. For example we can do the following since [tap]() is a supported event binding (aka *gestures*) on the target platform:
+This works the same in NativeScript regarding the `HostListener` decorator however only for events that are applicable for mobile platforms such as iOS and Android. For example, [tap](https://docs.nativescript.org/interaction.html#tap) is a supported event binding (aka _gestures_) on mobile platforms:
 
 ```
 import { Directive, ElementRef, HostListener, inject } from "@angular/core";
@@ -189,14 +194,24 @@ export class HighlightDirective {
   }
 }
 ```
-    
+
+![Directives HostListener with NativeScript](./images/directives-tap.gif?raw=true "Directives HostListener with NativeScript")
+
 ## Using Pipes
 
-Pipes are also incredibly useful for Angular developers and work exactly as you would expect as well; taken directly from the Angular docs [here](https://angular.io/guide/pipe-template)
+Pipes are also incredibly useful for Angular developers and work exactly as you would expect as well; taken directly from the Angular docs [here](https://angular.io/guide/pipe-template) for the web:
 
 ```
+<p>The hero's birthday is {{ birthday | date }}</p>
+```
+
+This would transform the value to display the formatted date and you can use them exactly the same with NativeScript:
 
 ```
+<Label text="The hero's birthday is {{ birthday | date }}"></Label>
+```
+
+![Pipes with NativeScript](./images/pipes.png?raw=true "Pipes with NativeScript")
 
 ## Performance Metrics
 

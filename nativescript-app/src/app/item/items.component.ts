@@ -8,7 +8,8 @@ import { ItemService } from './item.service'
   templateUrl: './items.component.html',
 })
 export class ItemsComponent implements OnInit {
-  items: Array<Item>
+  items: Array<Item>;
+  birthday = new Date(1980, 3, 16); 
   private itemService = inject(ItemService);
 
   ngOnInit(): void {
