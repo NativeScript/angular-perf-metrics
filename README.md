@@ -22,19 +22,23 @@ To make this a bit more clear, let's look at the differences in bootstrapping:
 ### Angular Web Bootstrap
 
 ```ts
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app/app.module";
 
 // locate the app-root and bootstrap the component in it's place
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 ```
 
 ### Angular for iOS and Android via NativeScript Bootstrap
 
 ```ts
-import { platformNativeScript, runNativeScriptAngularApp } from '@nativescript/angular';
-import { AppModule } from './app/app.module';
+import {
+  platformNativeScript,
+  runNativeScriptAngularApp,
+} from "@nativescript/angular";
+import { AppModule } from "./app/app.module";
 
 // runs the NativeScript application, nothing is bootstrapped yet, as we're only setting up the platform and callbacks
 runNativeScriptAngularApp({
@@ -55,6 +59,59 @@ Let us elaborate on each platform:
 
 2. On both platforms, if the app is woken up by some kind of event, like a background fetch, your `main.ts` code will run, but the angular application will not be bootstrapped.
 
+## Understanding the Lifecycle
+
+Having direct access to the native platform is a powerful tool, but it's important to understand how the platform itself works.
+
+1. The platform launches your application.
+   1. This can be either in the background or the foreground. This is where android's Application is created and iOS' main function is called.
+2. The runtime (V8) is initialized at the earliest possible time.
+3. Your application entrypoint is called (main.ts)
+   1. Everything from this point onwards happens in JS through the NativeScript Runtime
+4. Application is initialized in `runNativeScriptAngularApp`
+   1. This calls `UIApplicationMain` on iOS and sets up the Application and Activity callbacks for Android.
+5. (optional) `appModuleBootstrap` is called
+   1. If the app has been launched in the background, maybe because of a background fetch event, or a firebase Data push notification, the angular application may not be bootstrapped at all unless the user opens the app during this time.
+
+What this means in practice is that you have the best of both worlds. You can use the full platform capabilities to run the minimum amount of code necessary for the task at hand while having the full power of Angular for building your UI.
+
+We're often accustomed to just calling `platformBrowserDynamic().bootstrapModule(AppModule)` to get the job done without thinking much about it, but you could, for example, create a very minimal non-UI module that just contains the few services required for a background fetch. For example:
+
+```ts
+@NgModule({
+  imports: [NativeScriptModule],
+})
+export class BackgroundModule {
+  ngDoBootstrap() {
+    // do nothing, this is not an UI module
+  }
+}
+
+const moduleRefPromise = platformNativeScript().bootstrapModule(AppModule);
+
+@JavaProxy("com.example.SomeEventReceiver")
+@NativeClass()
+class SomeEventReceiver extends android.content.BroadcastReceiver {
+  moduleRef: NgModuleRef<BackgroundModule>;
+  onReceive(
+    context: android.content.Context,
+    intent: android.content.Intent
+  ): void {
+    console.log("INTENT RECEIVED");
+    this.doBackgroundFetch();
+  }
+
+  async doBackgroundFetch() {
+    const moduleRef = await moduleRefPromise;
+    moduleRef.injector.get(BackgroundService).fetchLatestDataAndSaveToDisk();
+  }
+}
+```
+
+You can also use RxJS or `providedIn: 'platform'` services to exchange events between the background module and the main angular app in case it's running.
+
+**This is similar to what a Service Worker would look like on the web, but we're sharing the same JS context!**
+
 ## Using Standalone Components
 
 Using standalone components works just like the web!
@@ -67,6 +124,7 @@ import { NativeScriptCommonModule } from "@nativescript/angular";
   selector: "hello-standalone",
   template: `<Label text="Hello, I'm a standalone component"></Label>`,
   imports: [NativeScriptCommonModule],
+  schemas: [NO_ERRORS_SCHEMA], // custom schemas are not supported by the angular compiler, so we use NO_ERRORS_SCHEMA
   standalone: true,
 })
 export class HelloStandaloneComponent {}
@@ -141,11 +199,13 @@ Pipes are also incredibly useful for Angular developers and work exactly as you 
 ```
 
 ## Performance Metrics
+
     * time to boot/time to interactive (start metric before calling boostrap, stop it after app component ngAfterViewInit fires)
     * time to interactive
     * various marshalling metrics for extra context (Nathan)
 
-* any other interesting details (perhaps code sharing - driving codebases from typescript based workspaces)
-    * Nathan and Eduardo
+- any other interesting details (perhaps code sharing - driving codebases from typescript based workspaces)
 
-* closing thoughts
+  - Nathan and Eduardo
+
+- closing thoughts
