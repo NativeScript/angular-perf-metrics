@@ -1,17 +1,21 @@
-## NativeScript for Angular
+# NativeScript for Angular
 
-* brief overview - why/use cases (Nathan)
+## Overview
 
-* bootstrap (Eduardo)
+NativeScript empowers JavaScript with native platform APIs which means it also works with Angular in delightful ways.
+
+For example, you can use your Angular skills to build rich iOS and Android experiences without ever leaving your TypeScript driven codebase.
+
+## Bootstrap Comparisons (Eduardo)
     * compare/contrast differences - discuss what happens from device vs. web app perhaps
 
-* standalone component usage (Eduardo)
+## Using Standalone Components (Eduardo)
 
-* directive use case (Nathan)
+## Using Directives (Nathan)
     
-* pipe use case (Nathan)
+## Using Pipes (Nathan)
 
-* performance metrics showing numbers from pure native vs. nativescript
+## Performance Metrics
     * time to boot/time to interactive (start metric before calling boostrap, stop it after app component ngAfterViewInit fires)
     * time to interactive
     * various marshalling metrics for extra context (Nathan)
