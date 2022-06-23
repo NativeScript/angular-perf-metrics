@@ -6,16 +6,16 @@ For example, you can use your Angular skills to build rich Android and iOS exper
 
 To better illustrate what is meant by this, let's cover a few comparisons between standard web targeted Angular apps vs. NativeScript enabled Angular apps targeting iOS and Android platforms.
 
-- [Bootstrap](#bootstrap)
-  - [Angular Web Bootstrap](#angular-web-bootstrap)
-  - [Angular for iOS and Android via NativeScript Bootstrap](#angular-for-ios-and-android-via-nativescript-bootstrap)
-- [Understanding the Lifecycle](#understanding-the-lifecycle)
-- [Using Standalone Components](#using-standalone-components)
-- [Using Directives](#using-directives)
-  - [Event Considerations](#event-considerations)
-- [Using Pipes](#using-pipes)
-- [Performance Metrics](#performance-metrics)
-- [Summary](#summary)
+  - [Bootstrap](#bootstrap)
+    - [Angular Web Bootstrap](#angular-web-bootstrap)
+    - [Angular for iOS and Android via NativeScript Bootstrap](#angular-for-ios-and-android-via-nativescript-bootstrap)
+  - [Understanding the Lifecycle](#understanding-the-lifecycle)
+  - [Using Standalone Components](#using-standalone-components)
+  - [Using Directives](#using-directives)
+    - [Event Considerations](#event-considerations)
+  - [Using Pipes](#using-pipes)
+  - [Performance Metrics](#performance-metrics)
+  - [Summary](#summary)
 
 ## Bootstrap
 
@@ -106,7 +106,6 @@ const moduleRefPromise = platformNativeScript().bootstrapModule(AppModule);
 @JavaProxy("com.example.SomeEventReceiver")
 @NativeClass()
 class SomeEventReceiver extends android.content.BroadcastReceiver {
-  moduleRef: NgModuleRef<BackgroundModule>;
   onReceive(
     context: android.content.Context,
     intent: android.content.Intent
