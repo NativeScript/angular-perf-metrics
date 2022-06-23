@@ -38,7 +38,7 @@ runNativeScriptAngularApp({
 ```
 
 On NativeScript, your angular application is a part of a bigger application. providedIn: 'root' services are singletons for that single angular instance, so if you need an actual singleton you can use providedIn: 'platform'. When does this happen exactly:
-1. On Android, when the user leaves the app with the back button the Activity is destroyed, so your ApplicationRef will be destroyed.
+1. On Android, when the user leaves the app with the back button the Activity is destroyed, so your ApplicationRef will be destroyed. This behavior has changed in Android 12 (https://developer.android.com/about/versions/12/behavior-changes-all#back-press), so from 12 and up the angular instance should not be destroyed anymore.
 2. On both platforms, if the app is woken up by some kind of event, like a background fetch, your `main.ts` code will run, but the angular application will not be bootstrapped.
 
 ## Using Standalone Components (Eduardo)
