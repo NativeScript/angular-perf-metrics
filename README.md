@@ -99,7 +99,7 @@ That is precisely the `highlight.directive.ts` example shown in the Angular docs
 <Label appHighlight text="Attribute Directive"></Label>
 ```
 
-![Directives with NativeScript](./images/directives.jpg?raw=true "Directives with NativeScript")
+![Directives with NativeScript](./images/directives.png?raw=true "Directives with NativeScript")
 
 ### Event Considerations
 
