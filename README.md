@@ -1,21 +1,22 @@
 # NativeScript for Angular
 
-NativeScript empowers JavaScript with native platform APIs which means it also works with Angular in delightful ways.
+NativeScript empowers JavaScript with native platform APIs which means it also works with Angular in delightful ways (past v2 - v13, current v14 and future releases!).
 
 For example, you can use your Angular skills to build rich Android and iOS experiences without ever leaving your TypeScript driven codebase.
 
 To better illustrate what is meant by this, let's cover a few comparisons between standard web targeted Angular apps vs. NativeScript enabled Angular apps targeting iOS and Android platforms.
 
-  - [Bootstrap](#bootstrap)
-    - [Angular Web Bootstrap](#angular-web-bootstrap)
-    - [Angular for iOS and Android via NativeScript Bootstrap](#angular-for-ios-and-android-via-nativescript-bootstrap)
-  - [Understanding the Lifecycle](#understanding-the-lifecycle)
-  - [Using Standalone Components](#using-standalone-components)
-  - [Using Directives](#using-directives)
-    - [Event Considerations](#event-considerations)
-  - [Using Pipes](#using-pipes)
-  - [Performance Metrics](#performance-metrics)
-  - [Summary](#summary)
+- [Bootstrap](#bootstrap)
+  - [Angular Web Bootstrap](#angular-web-bootstrap)
+  - [Angular for iOS and Android via NativeScript Bootstrap](#angular-for-ios-and-android-via-nativescript-bootstrap)
+- [Understanding the Lifecycle](#understanding-the-lifecycle)
+- [Using Standalone Components](#using-standalone-components)
+- [Using Directives](#using-directives)
+  - [Event Considerations](#event-considerations)
+- [Using Pipes](#using-pipes)
+- [Performance Metrics](#performance-metrics)
+- [StackBlitz learn by example](#stackBlitz-learn-by-example)
+- [Summary](#summary)
 
 ## Bootstrap
 
@@ -231,8 +232,10 @@ This would transform the value to display the formatted date and you can use the
     * time to interactive
     * various marshalling metrics for extra context (Nathan)
 
-- any other interesting details (perhaps code sharing - driving codebases from typescript based workspaces)
+## StackBlitz learn by example
 
-  - Nathan and Eduardo
+You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nativescript-angular-14) which dives deeper into all these topics and more.
+
+  - Eduardo: just explain this sample a bit
 
 ## Summary
