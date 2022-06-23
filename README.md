@@ -6,6 +6,17 @@ For example, you can use your Angular skills to build rich Android and iOS exper
 
 To better illustrate what is meant by this, let's cover a few comparisons between standard web targeted Angular apps vs. NativeScript enabled Angular apps targeting iOS and Android platforms.
 
+- [Bootstrap](#bootstrap)
+  - [Angular Web Bootstrap](#angular-web-bootstrap)
+  - [Angular for iOS and Android via NativeScript Bootstrap](#angular-for-ios-and-android-via-nativescript-bootstrap)
+- [Understanding the Lifecycle](#understanding-the-lifecycle)
+- [Using Standalone Components](#using-standalone-components)
+- [Using Directives](#using-directives)
+  - [Event Considerations](#event-considerations)
+- [Using Pipes](#using-pipes)
+- [Performance Metrics](#performance-metrics)
+- [Summary](#summary)
+
 ## Bootstrap
 
 Web apps usually don't have to worry about the browser lifecycle, as the flow is pretty simple:
@@ -117,23 +128,25 @@ You can also use RxJS or `providedIn: 'platform'` services to exchange events be
 
 ## Using Standalone Components
 
-Using standalone components works just like the web!
+Using standalone components work just like the web as shown in the Angular doc [here](https://angular.io/guide/standalone-components).
 
 ```ts
 import { Component } from "@angular/core";
 import { NativeScriptCommonModule } from "@nativescript/angular";
 
 @Component({
-  selector: "hello-standalone",
-  template: `<Label text="Hello, I'm a standalone component"></Label>`,
-  imports: [NativeScriptCommonModule],
-  schemas: [NO_ERRORS_SCHEMA], // custom schemas are not supported by the angular compiler, so we use NO_ERRORS_SCHEMA
   standalone: true,
+  selector: "hello-standalone",
+  imports: [NativeScriptCommonModule],
+  template: `<Label text="Hello, I'm a standalone component"></Label>`,
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class HelloStandaloneComponent {}
 ```
 
 Here we can use any NativeScript View components we desire with our standalone components whereby importing the `NativeScriptCommonModule` and they will work completely standalone.
+
+Take note that custom schemas are not supported by the angular compiler, so we also use [NO_ERRORS_SCHEMA](https://angular.io/api/core/NO_ERRORS_SCHEMA).
 
 ## Using Directives
 
@@ -223,4 +236,4 @@ This would transform the value to display the formatted date and you can use the
 
   - Nathan and Eduardo
 
-- closing thoughts
+## Summary
