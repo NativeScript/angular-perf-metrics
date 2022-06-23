@@ -6,11 +6,12 @@ import { AppComponent } from './app.component'
 import { ItemsComponent } from './item/items.component'
 import { ItemDetailComponent } from './item/item-detail.component'
 import { HelloStandaloneComponent } from './hello.standalone.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   bootstrap: [AppComponent],
-  imports: [NativeScriptModule, AppRoutingModule, HelloStandaloneComponent, ItemDetailComponent],
-  declarations: [AppComponent, ItemsComponent],
+  imports: [NativeScriptModule, AppRoutingModule, HelloStandaloneComponent],
+  declarations: [AppComponent, ItemsComponent, ItemDetailComponent, HighlightDirective],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],
 })

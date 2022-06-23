@@ -1,6 +1,5 @@
 import { Component, inject, NO_ERRORS_SCHEMA, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { NativeScriptCommonModule } from "@nativescript/angular";
 
 import { Item } from "./item";
 import { ItemService } from "./item.service";
@@ -17,9 +16,7 @@ import { ItemService } from "./item.service";
       </FlexboxLayout>
       <Label class="h4 m-15" [text]="item.role"></Label>
     </FlexboxLayout>
-  `,
-  schemas: [NO_ERRORS_SCHEMA],
-  standalone: true,
+  `
 })
 export class ItemDetailComponent implements OnInit {
   item: Item;
