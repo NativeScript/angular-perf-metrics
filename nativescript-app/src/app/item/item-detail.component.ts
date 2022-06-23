@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { Component, inject, NO_ERRORS_SCHEMA, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { NativeScriptCommonModule } from "@nativescript/angular";
 
-import { Item } from './item'
-import { ItemService } from './item.service'
+import { Item } from "./item";
+import { ItemService } from "./item.service";
 
 @Component({
-  selector: 'ns-details',
-  templateUrl: './item-detail.component.html',
+  selector: "ns-details",
+  template: `
+    <ActionBar title="Details"></ActionBar>
+
+    <FlexboxLayout flexDirection="column">
+      <FlexboxLayout class="m-15">
+        <Label class="h2" [text]="item.id + '. '"></Label>
+        <Label class="h2" [text]="item.name"></Label>
+      </FlexboxLayout>
+      <Label class="h4 m-15" [text]="item.role"></Label>
+    </FlexboxLayout>
+  `,
+  schemas: [NO_ERRORS_SCHEMA],
+  standalone: true,
 })
 export class ItemDetailComponent implements OnInit {
-  item: Item
+  item: Item;
 
-  constructor(private itemService: ItemService, private route: ActivatedRoute) {}
+  itemService = inject(ItemService);
+  route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.params.id
-    this.item = this.itemService.getItem(id)
+    const id = +this.route.snapshot.params.id;
+    this.item = this.itemService.getItem(id);
   }
 }
