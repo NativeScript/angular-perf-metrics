@@ -235,7 +235,7 @@ NativeScript performance is impressive resulting in delightful outcomes. As with
 
 Here are some out of the box performance metrics comparing:
 
-Angular Web Bootstrap vs. Angular for iOS/Android via NativeScript Bootstrap vs. Pure Native Bootstrap
+**Angular Web Bootstrap** vs. **Angular for iOS/Android via NativeScript Bootstrap** vs. **Pure Native Bootstrap**
 
 Note: All metrics regarding Angular bootstrap are measured after the JavaScript engine is ready, whether it be in the browser or on a mobile device.
 
