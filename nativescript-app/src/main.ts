@@ -6,6 +6,7 @@ import { enableProdMode } from "@angular/core";
 
 import { AppModule } from "./app/app.module";
 
+console.time('JS to full navigation');
 console.time("JS to full ui");
 
 enableProdMode();
