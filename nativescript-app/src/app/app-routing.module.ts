@@ -4,7 +4,7 @@ import { NativeScriptRouterModule } from "@nativescript/angular";
 
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
-import { ROUTE_PROVIDER } from "./token";
+import { BENCHMARK_MODE, ROUTE_PROVIDER } from "./token";
 import { BenchmarkStandaloneComponent } from "./benchmark.standalone.component";
 
 const routes: Routes = [
@@ -14,7 +14,10 @@ const routes: Routes = [
   {
     path: "benchmark",
     component: BenchmarkStandaloneComponent,
-    providers: [{ provide: ROUTE_PROVIDER, useValue: "/items" }],
+    providers: [
+      { provide: ROUTE_PROVIDER, useValue: "/items" },
+      { provide: BENCHMARK_MODE, useValue: "normal" },
+    ],
   },
   {
     path: "lazy",
