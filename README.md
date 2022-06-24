@@ -302,3 +302,10 @@ You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nati
   - Eduardo: just explain this sample a bit
 
 ## Summary
+
+## Credits
+
+* [Eduardo Speroni](https://github.com/edusperoni), [@eduardosperoni](https://twitter.com/eduardosperoni)
+  * [Valor Software Github](https://github.com/valor-software), [@ValorSoft](https://twitter.com/ValorSoft)
+* [Nathan Walker](https://github.com/NathanWalker), [@wwwalkerrun](https://twitter.com/wwwalkerrun)
+  * [nStudio Github](https://github.com/nstudio), [@teamnstudio](https://twitter.com/teamnstudio)
