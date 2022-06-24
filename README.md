@@ -15,6 +15,9 @@ To better illustrate what is meant by this, let's cover a few comparisons betwee
   - [Event Considerations](#event-considerations)
 - [Using Pipes](#using-pipes)
 - [Performance Metrics](#performance-metrics)
+  - [Performance Angular Web Bootstrap](#performance-angular-web-bootstrap)
+  - [Performance Angular for iOS and Android via NativeScript Bootstrap](#performance-angular-for-ios-and-android-via-nativescript-bootstrap)
+  - [Performance Pure Native](#performance-pure-native)
 - [StackBlitz learn by example](#stackBlitz-learn-by-example)
 - [Summary](#summary)
 
@@ -234,20 +237,22 @@ Here are some out of the box performance metrics comparing:
 
 Angular Web Bootstrap vs. Angular for iOS/Android via NativeScript Bootstrap vs. Pure Native Bootstrap
 
-### Angular Web Bootstrap
+Note: All metrics regarding Angular bootstrap are measured after the JavaScript engine is ready, whether it be in the browser or on a mobile device.
+
+### Performance Angular Web Bootstrap
 
 *Environment details*:
 * iPhone 13 Pro, iOS 15.5, Mobile Safari browser
 
 * mobile browser time to bootstrap Angular app: `10.417 ms`
 
-[App profiled can be found here]() and can be run on your own with the following from the app directory:
+[App can be found here]() and run on your own:
 
 ```
 ng serve --open
 ```
 
-### Angular for iOS and Android via NativeScript Bootstrap
+### Performance Angular for iOS and Android via NativeScript Bootstrap
 
 *Environment details*:
 * iPhone 13 Pro, iOS 15.5
@@ -255,36 +260,40 @@ ng serve --open
 
 #### iOS
 
-The difference between `Angular bootstrap` vs. `native iOS application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+* time to bootstrap Angular app: `8.357ms`
+* time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `44.695ms`
+* time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `63.917ms`
 
-* time to Angular bootstrap Angular app: `8.357ms`
-* time from Angular bootstrap until we have confirmation the full UI has been created: `33.698ms`
-* time from the native iOS application creation to the full UI: `45.219ms`
-
-[App profiled can be here]() and can be run on your own with the following from the app directory:
+[App can be found here]() and run on your own:
 
 ```
-ns run android --no-hmr
-// or...
 ns run ios --no-hmr
 ```
 
+The difference between `Angular bootstrap` vs. `native iOS application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+
 #### Android
 
-The difference between `Angular bootstrap` vs. `native Android application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the Android device vs. the time it takes for Android to start the [Main Activity](https://developer.android.com/guide/components/activities/intro-activities?authuser=1) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+* time to bootstrap Angular app: `17.244ms`
+* time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `160.039ms`
+* time from the native Android application to when the app is ready: `239.359ms`
 
-* time to Angular bootstrap Angular app: `17.244ms`
-* time from Angular bootstrap until we have confirmation the full UI has been created: `160.039ms`
-* time from the native Android application creation to the full UI: `239.359ms`
+[App can be found here]() and run on your own:
 
-### Pure Native
+```
+ns run android --no-hmr
+```
+
+The difference between `Angular bootstrap` vs. `native Android application creation` represents the time it takes for JavaScript to boot the Angular app on the Android device vs. the time it takes for Android to start the [Main Activity](https://developer.android.com/guide/components/activities/intro-activities?authuser=1) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+
+### Performance Pure Native
 
 We can measure similar metrics with a pure native application, for example iOS using Objective C alone.
 
-* time to 19.359292
+* time from native iOS application creation to when the UI is created (aka `viewDidLoad` of UIViewController): `30.651583 ms`
+* time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `54.013500 ms`
 
-
-If we compare these metrics to pure native development you will often find ~50-100ms difference in bootstrap to data binding updates which are indistinguishable.
+On average NativeScript performance is ~20ms behind native metrics which is quite impressive.
 
 ## StackBlitz learn by example
 
