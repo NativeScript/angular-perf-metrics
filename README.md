@@ -20,7 +20,7 @@ To better illustrate what is meant by this, let's cover a few comparisons betwee
 
 ## Bootstrap
 
-Web apps usually don't have to worry about the browser lifecycle, as the flow is pretty simple:
+Web apps usually don't have to worry much about the browser lifecycle as the flow is pretty straight-forward:
 
 1. load page
 2. user interacts with page
@@ -30,7 +30,7 @@ The user can even have multiple copies of the same application open across diffe
 
 Mobile apps are a bit different.
 
-The app can be launched in the background. In other words, we can exit the app UI while the app itself is still running, the app may be in the background, whereby other lifecycle details may need to be taken into consideration by the developer.
+For example the app can be launched in the background. In other words, we can exit the app UI while the app itself is still running in the background whereby other lifecycle details may need to be taken into consideration by the developer.
 
 To make this a bit more clear, let's look at the differences in app bootstrap:
 
@@ -228,9 +228,63 @@ This would transform the value to display the formatted date and you can use the
 
 ## Performance Metrics
 
-    * time to boot/time to interactive (start metric before calling boostrap, stop it after app component ngAfterViewInit fires)
-    * time to interactive
-    * various marshalling metrics for extra context (Nathan)
+NativeScript performance is impressive resulting in delightful outcomes. As with all performance optimizations, understanding your programming language and tech stack are key to unlocking it's full potential.
+
+Here are some out of the box performance metrics comparing:
+
+Angular Web Bootstrap vs. Angular for iOS/Android via NativeScript Bootstrap vs. Pure Native Bootstrap
+
+### Angular Web Bootstrap
+
+*Environment details*:
+* iPhone 13 Pro, iOS 15.5, Mobile Safari browser
+
+* mobile browser time to bootstrap Angular app: `10.417 ms`
+
+[App profiled can be found here]() and can be run on your own with the following from the app directory:
+
+```
+ng serve --open
+```
+
+### Angular for iOS and Android via NativeScript Bootstrap
+
+*Environment details*:
+* iPhone 13 Pro, iOS 15.5
+* Android Samsung Galaxy S20, Android 12
+
+#### iOS
+
+The difference between `Angular bootstrap` vs. `native iOS application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+
+* time to Angular bootstrap Angular app: `8.357ms`
+* time from Angular bootstrap until we have confirmation the full UI has been created: `33.698ms`
+* time from the native iOS application creation to the full UI: `45.219ms`
+
+[App profiled can be here]() and can be run on your own with the following from the app directory:
+
+```
+ns run android --no-hmr
+// or...
+ns run ios --no-hmr
+```
+
+#### Android
+
+The difference between `Angular bootstrap` vs. `native Android application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the Android device vs. the time it takes for Android to start the [Main Activity](https://developer.android.com/guide/components/activities/intro-activities?authuser=1) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+
+* time to Angular bootstrap Angular app: `17.244ms`
+* time from Angular bootstrap until we have confirmation the full UI has been created: `160.039ms`
+* time from the native Android application creation to the full UI: `239.359ms`
+
+### Pure Native
+
+We can measure similar metrics with a pure native application, for example iOS using Objective C alone.
+
+* time to 19.359292
+
+
+If we compare these metrics to pure native development you will often find ~50-100ms difference in bootstrap to data binding updates which are indistinguishable.
 
 ## StackBlitz learn by example
 
