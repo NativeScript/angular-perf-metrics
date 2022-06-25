@@ -293,7 +293,7 @@ We can measure similar metrics with a pure native application, for example iOS u
 * time from native iOS application creation to when the UI is created (aka `viewDidLoad` of UIViewController): `30.651583 ms`
 * time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `54.013500 ms`
 
-On average NativeScript performance is ~20ms behind native metrics which is quite impressive.
+On average NativeScript performance is ~20ms behind native metrics which is impressive.
 
 ## StackBlitz learn by example
 
@@ -304,6 +304,8 @@ You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nati
 ## Summary
 
 ## Credits
+
+NativeScript Technical Steering Committe (TSC) Members:
 
 * [Eduardo Speroni](https://github.com/edusperoni), [@eduardosperoni](https://twitter.com/eduardosperoni)
   * [Valor Software Github](https://github.com/valor-software), [@ValorSoft](https://twitter.com/ValorSoft)
