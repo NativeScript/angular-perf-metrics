@@ -309,7 +309,7 @@ This is an advanced example which illustrates fascinating points around how Angu
 
 ## Summary
 
-Combining Angular with NativeScript makes for a powerful tech stack with expansive versatility. You can enable your team to take advantage of broad app distribution options and opportunities for creative programming angles.
+Combining Angular with NativeScript makes for a powerful tech stack with a lot of versatility. You can enable your team to take advantage of broad app distribution options as well as take advantage of liberating programming angles.
 
 When building for the web and wanting to enable rich mobile platform features, NativeScript makes a great choice. It can also be used [alongside Capacitor](https://docs.nativescript.org/capacitor/index.html) in both directions: a. starting with Ionic and mixing it's abilities in via [@nativescript/capacitor](https://capacitor.nativescript.org/) or, b. starting with NativeScript and mixing Capacitor abilities in via [@nativescript/ionic-portals](https://docs.nativescript.org/plugins/ionic-portals.html).
 
