@@ -2,7 +2,7 @@
 
 NativeScript empowers JavaScript with native platform APIs which means it also works with Angular in delightful ways (past v2 - v13, current v14 and future releases!).
 
-For example, you can use your Angular skills to build rich Android and iOS experiences without ever leaving your TypeScript driven codebase.
+For example, you can use your Angular skills to build rich Android and iOS experiences leveraging the full scope and versatility of your TypeScript skills.
 
 To better illustrate what is meant by this, let's cover a few comparisons between standard web targeted Angular apps vs. NativeScript enabled Angular apps targeting iOS and Android platforms.
 
