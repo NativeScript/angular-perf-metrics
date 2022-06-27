@@ -248,8 +248,10 @@ Note: All metrics regarding Angular bootstrap are measured after the JavaScript 
 [App can be found here](https://github.com/NativeScript/angular-perf-metrics/tree/main/web-app) and run on your own:
 
 ```
-ng serve --open
+ng serve --open --host 0.0.0.0
 ```
+
+Using the `host` argument will allow you to connect using your local IP address in the mobile device web browser.
 
 ### Performance Angular for iOS and Android via NativeScript Bootstrap
 
