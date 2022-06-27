@@ -299,7 +299,12 @@ We can measure similar metrics with a pure native application, for example iOS u
 
 You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nativescript-angular-14) which dives deeper into all these topics and more.
 
-  - Eduardo: just explain this sample a bit
+This is an advanced example which illustrates fascinating points around how Angular/JavaScript is handled in a pure native mobile app such as...
+
+* How bootstrap differs between web apps and native mobile platform handling with NativeScript to consider advanced mobile platform cases (background services, etc.)
+* How subscriptions can leak if not properly handled during ngOnDestroy with `providedIn: 'root'` regarding mobile app exit
+* How native callbacks are not patched by `NgZone` whereby native functions may fall outside of zone so you want to make sure native callbacks are handled inside zone if UI changes are desired as a result of them
+* Android less than version 12 behavior regarding hardware back vs. Android version 12 or greater
 
 ## Summary
 
