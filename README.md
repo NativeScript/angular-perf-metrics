@@ -246,7 +246,7 @@ Note: All metrics regarding Angular bootstrap are measured after the JavaScript 
 
 * mobile browser time to bootstrap Angular app: `10.417 ms`
 
-[App can be found here]() and run on your own:
+[App can be found here](https://github.com/NativeScript/angular-perf-metrics/tree/main/web-app) and run on your own:
 
 ```
 ng serve --open
@@ -262,7 +262,7 @@ ng serve --open
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `44.695ms`
 * time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `63.917ms`
 
-[App can be found here]() and run on your own:
+[App can be found here](https://github.com/NativeScript/angular-perf-metrics/tree/main/nativescript-app) and run on your own:
 
 ```
 ns run ios --no-hmr
@@ -278,7 +278,7 @@ The difference between `Angular bootstrap` vs. `native iOS application creation`
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `160.039ms`
 * time from the native Android application to when the app is ready: `239.359ms`
 
-[App can be found here]() and run on your own:
+[App can be found here](https://github.com/NativeScript/angular-perf-metrics/tree/main/nativescript-app) and run on your own:
 
 ```
 ns run android --no-hmr
@@ -293,7 +293,7 @@ We can measure similar metrics with a pure native application, for example iOS u
 * time from native iOS application creation to when the UI is created (aka `viewDidLoad` of UIViewController): `30.651583 ms`
 * time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `54.013500 ms`
 
-[App can be found here]() and run on your own by opening the Xcode project to run.
+[App can be found here](https://github.com/NativeScript/angular-perf-metrics/tree/main/Native) and run on your own by opening the Xcode project to run.
 
 ## StackBlitz learn by example
 
