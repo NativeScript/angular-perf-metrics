@@ -241,8 +241,7 @@ Note: All metrics regarding Angular bootstrap are measured after the JavaScript 
 
 ### Performance Angular Web Bootstrap
 
-*Environment details*:
-* iPhone 13 Pro, iOS 15.5, Mobile Safari browser
+*Environment details*: `iPhone 13 Pro, iOS 15.5, Mobile Safari browser`
 
 * mobile browser time to bootstrap Angular app: `10.417 ms`
 
