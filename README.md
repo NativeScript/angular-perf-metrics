@@ -125,7 +125,7 @@ class SomeEventReceiver extends android.content.BroadcastReceiver {
 }
 ```
 
-You can also use RxJS or `providedIn: 'platform'` services to exchange events between the background module and the main angular app in case it's running.
+You can also use [rxjs](https://rxjs.dev) or `providedIn: 'platform'` services to exchange events between the background module and the main angular app in case it's running.
 
 **This is similar to what a Service Worker would look like on the web, but we're sharing the same JS context!**
 
@@ -254,11 +254,10 @@ ng serve --open
 
 ### Performance Angular for iOS and Android via NativeScript Bootstrap
 
+#### iOS
+
 *Environment details*:
 * iPhone 13 Pro, iOS 15.5
-* Android Samsung Galaxy S20, Android 12
-
-#### iOS
 
 * time to bootstrap Angular app: `8.357ms`
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `44.695ms`
@@ -273,6 +272,9 @@ ns run ios --no-hmr
 The difference between `Angular bootstrap` vs. `native iOS application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
 
 #### Android
+
+*Environment details*:
+* Android Samsung Galaxy S20, Android 12
 
 * time to bootstrap Angular app: `17.244ms`
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `160.039ms`
@@ -293,8 +295,6 @@ We can measure similar metrics with a pure native application, for example iOS u
 * time from native iOS application creation to when the UI is created (aka `viewDidLoad` of UIViewController): `30.651583 ms`
 * time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `54.013500 ms`
 
-On average NativeScript performance is ~20ms behind native metrics which is impressive.
-
 ## StackBlitz learn by example
 
 You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nativescript-angular-14) which dives deeper into all these topics and more.
@@ -302,6 +302,12 @@ You can learn by example from [this StackBlitz](https://stackblitz.com/edit/nati
   - Eduardo: just explain this sample a bit
 
 ## Summary
+
+Combining Angular with NativeScript makes for a powerful tech stack with expansive versatility. You can enable your team to take advantage of broad app distribution options and opportunities for creative programming angles.
+
+When building for the web and wanting to enable rich mobile platform features, NativeScript makes a great choice. It can also be used [alongside Capacitor](https://docs.nativescript.org/capacitor/index.html) in both directions: a. starting with Ionic and mixing it's abilities in via [@nativescript/capacitor](https://capacitor.nativescript.org/) or, b. starting with NativeScript and mixing Capacitor abilities in via [@nativescript/ionic-portals](https://docs.nativescript.org/plugins/ionic-portals.html).
+
+Additionally it can be combined within workspace style developments to enable wonderful architectural scalability by sharing JavaScript for increased reusability.
 
 ## Credits
 
