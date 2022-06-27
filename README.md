@@ -269,7 +269,7 @@ Using the `host` argument will allow you to connect using your local IP address 
 ns run ios --no-hmr
 ```
 
-The difference between `Angular bootstrap` vs. `native iOS application creation` in the following metrics represent the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
+The difference between `Angular bootstrap` vs. `native iOS application creation` represents the time it takes for JavaScript to boot the Angular app on the iOS device vs. the time it takes for iOS to start the [UIApplicationMain](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain?language=objc) after the native [Application](https://developer.android.com/reference/android/app/Application) creation.
 
 #### Android
 
