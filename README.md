@@ -256,8 +256,7 @@ ng serve --open
 
 #### iOS
 
-*Environment details*:
-* iPhone 13 Pro, iOS 15.5
+*Environment details*: `iPhone 13 Pro, iOS 15.5`
 
 * time to bootstrap Angular app: `8.357ms`
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `44.695ms`
@@ -273,8 +272,7 @@ The difference between `Angular bootstrap` vs. `native iOS application creation`
 
 #### Android
 
-*Environment details*:
-* Android Samsung Galaxy S20, Android 12
+*Environment details*: `Android Samsung Galaxy S20, Android 12`
 
 * time to bootstrap Angular app: `17.244ms`
 * time from native iOS application creation to when the UI is created (aka `loaded` event in NativeScript): `160.039ms`
@@ -294,6 +292,8 @@ We can measure similar metrics with a pure native application, for example iOS u
 
 * time from native iOS application creation to when the UI is created (aka `viewDidLoad` of UIViewController): `30.651583 ms`
 * time from native iOS application creation to when the app is ready (aka `viewDidAppear` of UIViewController): `54.013500 ms`
+
+[App can be found here]() and run on your own by opening the Xcode project to run.
 
 ## StackBlitz learn by example
 
